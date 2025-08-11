@@ -21,10 +21,30 @@ import "fmt"
 	1 <= s.length <= 10的4次方
 	s 仅由括号 '()[]{}' 组成
 */
-func isEffective() bool {
-	return true
+func isValid(str string) bool {
+	if len(str)%2 != 0 {
+		return false
+	}
+	stack := make([]rune, 0)
+	matching := map[rune]rune{
+		'}': '{',
+		')': '(',
+		']': '[',
+	}
+	for _, ch := range str {
+		if ch == '{' || ch == '[' || ch == '(' {
+			stack = append(stack, ch)
+		} else if matched, ok := matching[ch]; ok {
+			if len(stack) == 0 || stack[len(stack)-1] != matched {
+				return false
+			}
+			stack = stack[:len(stack)-1]
+		}
+
+	}
+	return len(stack) == 0
 }
 func main() {
-	s := "()"
-	fmt.Println(len(s))
+	s := "(){}{{{}}}"
+	fmt.Println(isValid(s))
 }
