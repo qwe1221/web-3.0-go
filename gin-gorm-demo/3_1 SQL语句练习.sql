@@ -1,17 +1,17 @@
-package main
 
-/**
+
 CREATE TABLE students (
     id INT AUTO_INCREMENT PRIMARY KEY,       -- 自增主键
     name VARCHAR(50) NOT NULL,               -- 学生姓名（非空）
     age INT,                                 -- 学生年龄（可为空）
     grade VARCHAR(20)                        -- 学生年级（可为空）
 );
+/**
 编写SQL语句向 students 表中插入一条新记录，学生姓名为 "张三"，年龄为 20，年级为 "三年级"。
 编写SQL语句查询 students 表中所有年龄大于 18 岁的学生信息。
 编写SQL语句将 students 表中姓名为 "张三" 的学生年级更新为 "四年级"。
 编写SQL语句删除 students 表中年龄小于 15 岁的学生记录。
-
+*/
 INSERT INTO students (name, age, grade) VALUES ('张三', 20, '三年级');
 
 SELECT * FROM students WHERE age > 18;
@@ -20,7 +20,7 @@ UPDATE students SET grade = '四年级' WHERE name = '张三';
 
 DELETE FROM students WHERE age < 15;
 
-2、事务语句
+--2、事务语句
 use go;
 
 CREATE TABLE accounts (
@@ -91,4 +91,4 @@ DELIMITER ;
 
 -- 调用存储过程
 CALL TransferMoney(1, 2, 100);
-*/
+
